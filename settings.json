@@ -1,0 +1,94 @@
+{
+  // Editor settings
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.mouseWheelZoom": true,
+  "editor.minimap.enabled": false,
+  "editor.inlineSuggest.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "files.watcherExclude": {
+    "**/node_modules": true,
+    "**/.git": true
+  },
+  "prettier.trailingComma": "es5",
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+
+  // Language-specific formatting
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[cpp]": { "editor.defaultFormatter": "ms-vscode.cpptools" },
+  "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
+  "[terraform-vars]": { "editor.defaultFormatter": "hashicorp.terraform" },
+
+  // UI settings
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "GitHub Dark Dimmed",
+  "window.menuBarVisibility": "compact",
+
+  // Extension settings
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveSassCompile.settings.showOutputWindowOn": "None",
+  "liveSassCompile.settings.watchOnLaunch": true,
+  "vscode-pets.theme": "forest",
+  "vscode-pets.throwBallWithMouse": true,
+  "vscode-pets.petSize": "small",
+
+  // Debug settings
+  "debug.onTaskErrors": "abort",
+  "json.schemas": [],
+  "files.autoSave": "afterDelay",
+  "workbench.settings.applyToAllProfiles": [],
+  "tailwindCSS.experimental.configFile": null,
+  "files.autoSaveDelay": 500,
+  "workbench.activityBar.location": "top",
+
+  // Vim extension settings
+  "vim.digraphs": {},
+
+  // Let VS Code handle Ctrl+E (or any other keys you want)
+  "vim.handleKeys": {
+    "<C-e>": false,
+    "<C-a>": false, // allow VS Code to handle select all
+    "<C-c>": false, // allow system clipboard copy
+    "<C-v>": false  // allow system clipboard paste
+  },
+
+  // Enable Vim motions like real Vim
+  "vim.useCtrlKeys": true,
+
+  // Yank/delete commands copy to system clipboard
+  "vim.useSystemClipboard": true,
+
+  // Custom keybinding for Ctrl+A to select all in Vim normal mode
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-a>"],
+      "commands": ["normal! ggVG"] // go to top, select all, go to bottom
+    }
+  ],
+
+  // Custom keybinding for Ctrl+C in visual mode to copy selection
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-c>"],
+      "commands": ["y"] // yank selection to system clipboard
+    }
+  ],
+
+  // Custom keybinding for Ctrl+V in insert mode to paste from system clipboard
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-v>"],
+      "commands": ["editor.action.clipboardPasteAction"]
+    }
+  ]
+}
