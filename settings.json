@@ -1,94 +1,359 @@
 {
-  // Editor settings
+  // ============================================
+  // EDITOR SETTINGS
+  // ============================================
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.mouseWheelZoom": true,
   "editor.minimap.enabled": false,
-  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.enabled": true, // Changed: Enable GitHub Copilot/IntelliSense
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
+  "editor.lineNumbers": "relative", // Added: Relative line numbers for Vim motions
+  "editor.cursorBlinking": "solid", // Added: Solid cursor like Vim
+  "editor.scrollBeyondLastLine": false, // Added: Stop at last line like Vim
+  "editor.renderWhitespace": "selection", // Added: See whitespace when selected
+  "editor.bracketPairColorization.enabled": true, // Added: Color matching brackets
+  "editor.guides.bracketPairs": true, // Added: Bracket pair guides
+
+  // ============================================
+  // FILE WATCHER & AUTO-SAVE
+  // ============================================
   "files.watcherExclude": {
     "**/node_modules": true,
-    "**/.git": true
+    "**/.git": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
   },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+
+  // ============================================
+  // PRETTIER CONFIGURATION
+  // ============================================
   "prettier.trailingComma": "es5",
   "prettier.singleQuote": true,
   "prettier.semi": true,
+  "prettier.printWidth": 100, // Added: Wider print width
+  "prettier.arrowParens": "always", // Added: Consistent arrow functions
 
-  // Language-specific formatting
+  // ============================================
+  // LANGUAGE-SPECIFIC FORMATTING
+  // ============================================
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[cpp]": { "editor.defaultFormatter": "ms-vscode.cpptools" },
   "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
   "[terraform-vars]": { "editor.defaultFormatter": "hashicorp.terraform" },
 
-  // UI settings
+  // ============================================
+  // UI SETTINGS
+  // ============================================
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "GitHub Dark Dimmed",
+  "workbench.activityBar.location": "top", // Changed: Side for more horizontal space
+  "workbench.editor.enablePreview": false, // Added: Always open files in new tab
+  "workbench.editor.closeEmptyGroups": false, // Added: Keep split view open
   "window.menuBarVisibility": "compact",
+  "breadcrumbs.enabled": true, // Added: Show file breadcrumbs
 
-  // Extension settings
+  // ============================================
+  // EXTENSION SETTINGS
+  // ============================================
   "liveServer.settings.donotShowInfoMsg": true,
   "liveSassCompile.settings.showOutputWindowOn": "None",
   "liveSassCompile.settings.watchOnLaunch": true,
   "vscode-pets.theme": "forest",
   "vscode-pets.throwBallWithMouse": true,
   "vscode-pets.petSize": "small",
+  "tailwindCSS.experimental.configFile": null,
 
-  // Debug settings
+  // ============================================
+  // DEBUG SETTINGS
+  // ============================================
   "debug.onTaskErrors": "abort",
   "json.schemas": [],
-  "files.autoSave": "afterDelay",
-  "workbench.settings.applyToAllProfiles": [],
-  "tailwindCSS.experimental.configFile": null,
-  "files.autoSaveDelay": 500,
-  "workbench.activityBar.location": "top",
 
-  // Vim extension settings
-  "vim.digraphs": {},
+  // ============================================
+  // VIM EXTENSION - CORE SETTINGS
+  // ============================================
+  "vim.leader": "<space>", // Space as leader key (industry standard)
+  "vim.useSystemClipboard": true, // Yank/delete goes to system clipboard
+  "vim.useCtrlKeys": true, // Enable Vim Ctrl bindings (except overridden)
+  "vim.hlsearch": true, // Highlight search results
+  "vim.incsearch": true, // Incremental search while typing
+  "vim.smartcase": true, // Case-insensitive unless capital letter used
+  "vim.ignorecase": true, // Case-insensitive search by default
+  "vim.easymotion": true, // Enable easymotion for quick navigation
+  "vim.sneak": true, // Enable sneak for quick 2-char search
+  "vim.surround": true, // Enable vim-surround (cs"', ds", ys)
+  "vim.camelCaseMotion.enable": true, // Navigate camelCase words
+  "vim.highlightedyank.enable": true, // Briefly highlight yanked text
+  "vim.highlightedyank.duration": 200,
 
-  // Let VS Code handle Ctrl+E (or any other keys you want)
+  // ============================================
+  // VIM - SYSTEM KEYBINDINGS (Ctrl+A/C/V/E)
+  // ============================================
   "vim.handleKeys": {
-    "<C-e>": false,
-    "<C-a>": false, // allow VS Code to handle select all
-    "<C-c>": false, // allow system clipboard copy
-    "<C-v>": false  // allow system clipboard paste
+    "<C-a>": false, // Allow VSCode select all
+    "<C-c>": false, // Allow VSCode copy
+    "<C-v>": false, // Allow VSCode paste
+    "<C-e>": false, // Allow VSCode navigate diff files
+    "<C-f>": false, // Allow VSCode search
+    "<C-h>": false, // Allow VSCode replace (optional)
+    "<C-z>": false, // Allow VSCode undo
+    "<C-y>": false, // Allow VSCode redo
   },
 
-  // Enable Vim motions like real Vim
-  "vim.useCtrlKeys": true,
-
-  // Yank/delete commands copy to system clipboard
-  "vim.useSystemClipboard": true,
-
-  // Custom keybinding for Ctrl+A to select all in Vim normal mode
+  // ============================================
+  // VIM - NORMAL MODE KEYBINDINGS
+  // ============================================
   "vim.normalModeKeyBindingsNonRecursive": [
+    // File navigation
     {
-      "before": ["<C-a>"],
-      "commands": ["normal! ggVG"] // go to top, select all, go to bottom
-    }
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"],
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"],
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.showCommands"],
+    },
+
+    // Split navigation (like tmux/vim)
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.navigateLeft"],
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.navigateDown"],
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.navigateUp"],
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.navigateRight"],
+    },
+
+    // Buffer/Tab management
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"],
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"],
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.action.closeOtherEditors"],
+    },
+    {
+      "before": ["<Tab>"],
+      "commands": ["workbench.action.nextEditor"],
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": ["workbench.action.previousEditor"],
+    },
+
+    // Search and replace
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["workbench.action.findInFiles"],
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": [":nohl"], // Clear search highlighting
+    },
+
+    // Code actions
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"],
+    },
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["editor.action.rename"],
+    },
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"],
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"],
+    },
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"],
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"],
+    },
+
+    // Git integration
+    {
+      "before": ["<leader>", "g", "s"],
+      "commands": ["workbench.view.scm"],
+    },
+    {
+      "before": ["<leader>", "g", "d"],
+      "commands": ["git.openChange"],
+    },
+
+    // Window/Panel management
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"],
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["workbench.action.toggleSidebarVisibility"],
+    },
+
+    // Quick formatting
+    {
+      "before": ["<leader>", "="],
+      "commands": ["editor.action.formatDocument"],
+    },
+
+    // Center cursor after jumps (like Vim)
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"],
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z"],
+    },
+    {
+      "before": ["*"],
+      "after": ["*", "z", "z"],
+    },
+    {
+      "before": ["#"],
+      "after": ["#", "z", "z"],
+    },
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"],
+      "after": ["z", "z"],
+    },
   ],
 
-  // Custom keybinding for Ctrl+C in visual mode to copy selection
+  // ============================================
+  // VIM - VISUAL MODE KEYBINDINGS
+  // ============================================
   "vim.visualModeKeyBindingsNonRecursive": [
+    // Move selected lines up/down
     {
-      "before": ["<C-c>"],
-      "commands": ["y"] // yank selection to system clipboard
-    }
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"],
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"],
+    },
+
+    // Indent selected lines and reselect
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"],
+      "after": ["g", "v"],
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"],
+      "after": ["g", "v"],
+    },
+
+    // Quick code actions on selection
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"],
+    },
   ],
 
-  // Custom keybinding for Ctrl+V in insert mode to paste from system clipboard
+  // ============================================
+  // VIM - INSERT MODE KEYBINDINGS
+  // ============================================
   "vim.insertModeKeyBindingsNonRecursive": [
+    // Quick escape alternatives
     {
-      "before": ["<C-v>"],
-      "commands": ["editor.action.clipboardPasteAction"]
-    }
-  ]
+      "before": ["j", "j"],
+      "after": ["<Esc>"],
+    },
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"],
+    },
+  ],
+
+  // ============================================
+  // VIM - COMMAND MODE KEYBINDINGS
+  // ============================================
+  "vim.commandLineModeKeyBindingsNonRecursive": [],
+
+  // ============================================
+  // VIM - ADDITIONAL SETTINGS
+  // ============================================
+  "vim.digraphs": {},
+  "vim.statusBarColorControl": false, // Don't change status bar color
+  "vim.statusBarColors.normal": ["#005f5f", "#ffffff"],
+  "vim.statusBarColors.insert": "#5f0000",
+  "vim.statusBarColors.visual": "#5f00af",
+  "vim.statusBarColors.visualline": "#005f87",
+  "vim.statusBarColors.visualblock": "#86592d",
+  "vim.statusBarColors.replace": "#000000",
+
+  // ============================================
+  // TERMINAL SETTINGS
+  // ============================================
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "MesloLGS NF, monospace",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+
+  // ============================================
+  // SEARCH SETTINGS
+  // ============================================
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/coverage": true,
+    "**/.git": true,
+  },
+
+  // ============================================
+  // PERFORMANCE OPTIMIZATIONS
+  // ============================================
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": false, // Show but don't watch
+    "**/dist": true,
+    "**/build": true,
+  },
+  "search.followSymlinks": false,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
 }
