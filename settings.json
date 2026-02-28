@@ -6,7 +6,7 @@
   "editor.formatOnSave": true,
   "editor.mouseWheelZoom": true,
   "editor.minimap.enabled": false,
-  "editor.inlineSuggest.enabled": true, // Changed: Enable GitHub Copilot/IntelliSense
+  "editor.inlineSuggest.enabled": false, // Changed: Enable GitHub Copilot/IntelliSense
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -102,7 +102,7 @@
   "vim.highlightedyank.duration": 200,
 
   // ============================================
-  // VIM - SYSTEM KEYBINDINGS (Ctrl+A/C/V/E)
+  // VIM - SYSTEM KEYBINDINGS (Ctrl+A/C/V/E/X)
   // ============================================
   "vim.handleKeys": {
     "<C-a>": false, // Allow VSCode select all
@@ -113,6 +113,7 @@
     "<C-h>": false, // Allow VSCode replace (optional)
     "<C-z>": false, // Allow VSCode undo
     "<C-y>": false, // Allow VSCode redo
+    "<C-x>": false, // Allow VSCode cut
   },
 
   // ============================================
@@ -356,4 +357,7 @@
   },
   "search.followSymlinks": false,
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "workbench.settings.applyToAllProfiles": [],
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
 }
