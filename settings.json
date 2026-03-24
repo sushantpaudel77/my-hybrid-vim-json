@@ -1,43 +1,53 @@
 {
   // ============================================
-  // EDITOR SETTINGS
+  // EDITOR CORE
   // ============================================
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.mouseWheelZoom": true,
-  "editor.minimap.enabled": false,
-  "editor.inlineSuggest.enabled": false, // Changed: Enable GitHub Copilot/IntelliSense
-  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "editor.fontFamily": "GeistMono, monospace",
+  "editor.fontSize": 14,        
+  "editor.fontLigatures": true,
   "editor.wordWrap": "on",
-  "editor.lineNumbers": "relative", // Added: Relative line numbers for Vim motions
-  "editor.cursorBlinking": "solid", // Added: Solid cursor like Vim
-  "editor.scrollBeyondLastLine": false, // Added: Stop at last line like Vim
-  "editor.renderWhitespace": "selection", // Added: See whitespace when selected
-  "editor.bracketPairColorization.enabled": true, // Added: Color matching brackets
-  "editor.guides.bracketPairs": true, // Added: Bracket pair guides
+  "editor.lineNumbers": "relative",
+  "editor.cursorBlinking": "solid",
+  "editor.scrollBeyondLastLine": false,
+  "editor.renderWhitespace": "selection",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.inlineSuggest.enabled": true, // Enable AI/Copilot suggestions
+  "editor.suggestSelection": "first",
+  "editor.linkedEditing": true, // Auto-rename matching HTML/JSX tags
+  "editor.stickyScroll.enabled": true, // Pin current scope at top while scrolling
+  "editor.foldingImportsByDefault": true, // Collapse imports by default (cleaner view)
+  "editor.multiCursorModifier": "ctrlCmd", // Ctrl+Click = multi-cursor
 
   // ============================================
   // FILE WATCHER & AUTO-SAVE
   // ============================================
-  "files.watcherExclude": {
-    "**/node_modules": true,
-    "**/.git": true,
-    "**/dist": true,
-    "**/build": true,
-    "**/.next": true,
-  },
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 500,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.next/**": true,
+    "**/coverage/**": true,
+    "**/.turbo/**": true,
+  },
 
   // ============================================
-  // PRETTIER CONFIGURATION
+  // PRETTIER
   // ============================================
   "prettier.trailingComma": "es5",
   "prettier.singleQuote": true,
   "prettier.semi": true,
-  "prettier.printWidth": 100, // Added: Wider print width
-  "prettier.arrowParens": "always", // Added: Consistent arrow functions
+  "prettier.printWidth": 100,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true,
+  "prettier.jsxSingleQuote": false, // Keep JSX with double quotes (standard)
 
   // ============================================
   // LANGUAGE-SPECIFIC FORMATTING
@@ -51,290 +61,41 @@
   "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": { "other": "off", "comments": "off", "strings": "off" },
+  },
   "[cpp]": { "editor.defaultFormatter": "ms-vscode.cpptools" },
   "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
   "[terraform-vars]": { "editor.defaultFormatter": "hashicorp.terraform" },
 
   // ============================================
-  // UI SETTINGS
+  // UI & WORKBENCH
   // ============================================
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "GitHub Dark Dimmed",
-  "workbench.activityBar.location": "top", // Changed: Side for more horizontal space
-  "workbench.editor.enablePreview": false, // Added: Always open files in new tab
-  "workbench.editor.closeEmptyGroups": false, // Added: Keep split view open
+  "workbench.activityBar.location": "top",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.tabSizing": "shrink", // Shrink tabs instead of scrolling
+  "workbench.editor.wrapTabs": false,
+  "workbench.tree.indent": 12, // Slightly wider file tree indent
   "window.menuBarVisibility": "compact",
-  "breadcrumbs.enabled": true, // Added: Show file breadcrumbs
+  "breadcrumbs.enabled": true,
 
   // ============================================
-  // EXTENSION SETTINGS
-  // ============================================
-  "liveServer.settings.donotShowInfoMsg": true,
-  "liveSassCompile.settings.showOutputWindowOn": "None",
-  "liveSassCompile.settings.watchOnLaunch": true,
-  "vscode-pets.theme": "forest",
-  "vscode-pets.throwBallWithMouse": true,
-  "vscode-pets.petSize": "small",
-  "tailwindCSS.experimental.configFile": null,
-
-  // ============================================
-  // DEBUG SETTINGS
-  // ============================================
-  "debug.onTaskErrors": "abort",
-  "json.schemas": [],
-
-  // ============================================
-  // VIM EXTENSION - CORE SETTINGS
-  // ============================================
-  "vim.leader": "<space>", // Space as leader key (industry standard)
-  "vim.useSystemClipboard": true, // Yank/delete goes to system clipboard
-  "vim.useCtrlKeys": true, // Enable Vim Ctrl bindings (except overridden)
-  "vim.hlsearch": true, // Highlight search results
-  "vim.incsearch": true, // Incremental search while typing
-  "vim.smartcase": true, // Case-insensitive unless capital letter used
-  "vim.ignorecase": true, // Case-insensitive search by default
-  "vim.easymotion": true, // Enable easymotion for quick navigation
-  "vim.sneak": true, // Enable sneak for quick 2-char search
-  "vim.surround": true, // Enable vim-surround (cs"', ds", ys)
-  "vim.camelCaseMotion.enable": true, // Navigate camelCase words
-  "vim.highlightedyank.enable": true, // Briefly highlight yanked text
-  "vim.highlightedyank.duration": 200,
-
-  // ============================================
-  // VIM - SYSTEM KEYBINDINGS (Ctrl+A/C/V/E/X)
-  // ============================================
-  "vim.handleKeys": {
-    "<C-a>": false, // Allow VSCode select all
-    "<C-c>": false, // Allow VSCode copy
-    "<C-v>": false, // Allow VSCode paste
-    "<C-e>": false, // Allow VSCode navigate diff files
-    "<C-f>": false, // Allow VSCode search
-    "<C-h>": false, // Allow VSCode replace (optional)
-    "<C-z>": false, // Allow VSCode undo
-    "<C-y>": false, // Allow VSCode redo
-    "<C-x>": false, // Allow VSCode cut
-  },
-
-  // ============================================
-  // VIM - NORMAL MODE KEYBINDINGS
-  // ============================================
-  "vim.normalModeKeyBindingsNonRecursive": [
-    // File navigation
-    {
-      "before": ["<leader>", "e"],
-      "commands": ["workbench.view.explorer"],
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"],
-    },
-    {
-      "before": ["<leader>", "p"],
-      "commands": ["workbench.action.showCommands"],
-    },
-
-    // Split navigation (like tmux/vim)
-    {
-      "before": ["<C-h>"],
-      "commands": ["workbench.action.navigateLeft"],
-    },
-    {
-      "before": ["<C-j>"],
-      "commands": ["workbench.action.navigateDown"],
-    },
-    {
-      "before": ["<C-k>"],
-      "commands": ["workbench.action.navigateUp"],
-    },
-    {
-      "before": ["<C-l>"],
-      "commands": ["workbench.action.navigateRight"],
-    },
-
-    // Buffer/Tab management
-    {
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.files.save"],
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"],
-    },
-    {
-      "before": ["<leader>", "x"],
-      "commands": ["workbench.action.closeOtherEditors"],
-    },
-    {
-      "before": ["<Tab>"],
-      "commands": ["workbench.action.nextEditor"],
-    },
-    {
-      "before": ["<S-Tab>"],
-      "commands": ["workbench.action.previousEditor"],
-    },
-
-    // Search and replace
-    {
-      "before": ["<leader>", "/"],
-      "commands": ["workbench.action.findInFiles"],
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": [":nohl"], // Clear search highlighting
-    },
-
-    // Code actions
-    {
-      "before": ["<leader>", "c", "a"],
-      "commands": ["editor.action.quickFix"],
-    },
-    {
-      "before": ["<leader>", "r", "n"],
-      "commands": ["editor.action.rename"],
-    },
-    {
-      "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"],
-    },
-    {
-      "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"],
-    },
-    {
-      "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"],
-    },
-    {
-      "before": ["K"],
-      "commands": ["editor.action.showHover"],
-    },
-
-    // Git integration
-    {
-      "before": ["<leader>", "g", "s"],
-      "commands": ["workbench.view.scm"],
-    },
-    {
-      "before": ["<leader>", "g", "d"],
-      "commands": ["git.openChange"],
-    },
-
-    // Window/Panel management
-    {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.toggleTerminal"],
-    },
-    {
-      "before": ["<leader>", "b"],
-      "commands": ["workbench.action.toggleSidebarVisibility"],
-    },
-
-    // Quick formatting
-    {
-      "before": ["<leader>", "="],
-      "commands": ["editor.action.formatDocument"],
-    },
-
-    // Center cursor after jumps (like Vim)
-    {
-      "before": ["n"],
-      "after": ["n", "z", "z"],
-    },
-    {
-      "before": ["N"],
-      "after": ["N", "z", "z"],
-    },
-    {
-      "before": ["*"],
-      "after": ["*", "z", "z"],
-    },
-    {
-      "before": ["#"],
-      "after": ["#", "z", "z"],
-    },
-    {
-      "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"],
-      "after": ["z", "z"],
-    },
-  ],
-
-  // ============================================
-  // VIM - VISUAL MODE KEYBINDINGS
-  // ============================================
-  "vim.visualModeKeyBindingsNonRecursive": [
-    // Move selected lines up/down
-    {
-      "before": ["J"],
-      "commands": ["editor.action.moveLinesDownAction"],
-    },
-    {
-      "before": ["K"],
-      "commands": ["editor.action.moveLinesUpAction"],
-    },
-
-    // Indent selected lines and reselect
-    {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"],
-      "after": ["g", "v"],
-    },
-    {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"],
-      "after": ["g", "v"],
-    },
-
-    // Quick code actions on selection
-    {
-      "before": ["<leader>", "c", "a"],
-      "commands": ["editor.action.quickFix"],
-    },
-  ],
-
-  // ============================================
-  // VIM - INSERT MODE KEYBINDINGS
-  // ============================================
-  "vim.insertModeKeyBindingsNonRecursive": [
-    // Quick escape alternatives
-    {
-      "before": ["j", "j"],
-      "after": ["<Esc>"],
-    },
-    {
-      "before": ["j", "k"],
-      "after": ["<Esc>"],
-    },
-  ],
-
-  // ============================================
-  // VIM - COMMAND MODE KEYBINDINGS
-  // ============================================
-  "vim.commandLineModeKeyBindingsNonRecursive": [],
-
-  // ============================================
-  // VIM - ADDITIONAL SETTINGS
-  // ============================================
-  "vim.digraphs": {},
-  "vim.statusBarColorControl": false, // Don't change status bar color
-  "vim.statusBarColors.normal": ["#005f5f", "#ffffff"],
-  "vim.statusBarColors.insert": "#5f0000",
-  "vim.statusBarColors.visual": "#5f00af",
-  "vim.statusBarColors.visualline": "#005f87",
-  "vim.statusBarColors.visualblock": "#86592d",
-  "vim.statusBarColors.replace": "#000000",
-
-  // ============================================
-  // TERMINAL SETTINGS
+  // TERMINAL
   // ============================================
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontFamily": "MesloLGS NF, monospace",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.scrollback": 5000, // More scroll history
+  "terminal.integrated.persistentSessionReviveProcess": "never", // Fresh terminal on restart
 
   // ============================================
-  // SEARCH SETTINGS
+  // SEARCH & PERFORMANCE
   // ============================================
   "search.exclude": {
     "**/node_modules": true,
@@ -343,21 +104,173 @@
     "**/.next": true,
     "**/coverage": true,
     "**/.git": true,
+    "**/.turbo": true,
+    "**/pnpm-lock.yaml": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true, // Exclude lock files from search
   },
-
-  // ============================================
-  // PERFORMANCE OPTIMIZATIONS
-  // ============================================
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
-    "**/node_modules": false, // Show but don't watch
     "**/dist": true,
     "**/build": true,
   },
   "search.followSymlinks": false,
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
-  "workbench.settings.applyToAllProfiles": [],
+  "typescript.preferences.importModuleSpecifier": "non-relative", // Cleaner TS imports
+
+  // ============================================
+  // EXTENSIONS
+  // ============================================
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveSassCompile.settings.showOutputWindowOn": "None",
+  "liveSassCompile.settings.watchOnLaunch": true,
+  "tailwindCSS.experimental.configFile": null,
+  "tailwindCSS.suggestions": true,
+  "vscode-pets.theme": "forest",
+  "vscode-pets.throwBallWithMouse": true,
+  "vscode-pets.petSize": "small",
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+
+  // ============================================
+  // DEBUG
+  // ============================================
+  "debug.onTaskErrors": "abort",
+  "debug.console.fontSize": 13,
+  "json.schemas": [],
+
+  // ============================================
+  // VIM - CORE
+  // ============================================
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.smartcase": true,
+  "vim.ignorecase": true,
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.surround": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 200,
+  "vim.statusBarColorControl": false,
+
+  // ============================================
+  // VIM - PASSTHROUGH TO VSCODE (Ctrl keys)
+  // ============================================
+  "vim.handleKeys": {
+    "<C-a>": false, // Select all
+    "<C-c>": false, // Copy
+    "<C-v>": false, // Paste
+    "<C-x>": false, // Cut
+    "<C-z>": false, // Undo
+    "<C-y>": false, // Redo
+    "<C-f>": false, // Find
+    "<C-h>": false, // Replace / navigate left (handled below)
+    "<C-e>": false, // Scroll / navigate diff
+  },
+
+  // ============================================
+  // VIM - NORMAL MODE
+  // ============================================
+  "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": ["<leader>", "d", "l"], "commands": ["editor.action.copyLinesDownAction"] },
+    { "before": ["<leader>", "]"], "commands": ["editor.action.fontZoomIn"] },
+    { "before": ["<leader>", "["], "commands": ["editor.action.fontZoomOut"] },
+    { "before": ["<leader>", "0"], "commands": ["editor.action.fontZoomReset"] },
+
+    // --- File & Fuzzy Navigation ---
+    { "before": ["<leader>", "e"], "commands": ["workbench.view.explorer"] },
+    { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["<leader>", "p"], "commands": ["workbench.action.showCommands"] },
+    { "before": ["<leader>", "o"], "commands": ["workbench.action.gotoSymbol"] }, // Symbols in file
+    { "before": ["<leader>", "O"], "commands": ["workbench.action.showAllSymbols"] }, // Symbols workspace
+
+    // --- Split Navigation (tmux-style) ---
+    { "before": ["<C-h>"], "commands": ["workbench.action.navigateLeft"] },
+    { "before": ["<C-j>"], "commands": ["workbench.action.navigateDown"] },
+    { "before": ["<C-k>"], "commands": ["workbench.action.navigateUp"] },
+    { "before": ["<C-l>"], "commands": ["workbench.action.navigateRight"] },
+
+    // --- Split Creation ---
+    { "before": ["<leader>", "v"], "commands": ["workbench.action.splitEditor"] }, // Vertical split
+    { "before": ["<leader>", "s"], "commands": ["workbench.action.splitEditorDown"] }, // Horizontal split
+
+    // --- Tab / Buffer Management ---
+    { "before": ["<Tab>"], "commands": ["workbench.action.nextEditor"] },
+    { "before": ["<S-Tab>"], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] },
+    { "before": ["<leader>", "q"], "commands": ["workbench.action.closeActiveEditor"] },
+    { "before": ["<leader>", "x"], "commands": ["workbench.action.closeOtherEditors"] },
+    { "before": ["<leader>", "X"], "commands": ["workbench.action.closeAllEditors"] }, // Close all
+
+    // --- Search ---
+    { "before": ["<leader>", "/"], "commands": ["workbench.action.findInFiles"] },
+    { "before": ["<leader>", "h"], "commands": [":nohl"] },
+
+    // --- LSP / Code Actions ---
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"] },
+    { "before": ["<leader>", "r", "n"], "commands": ["editor.action.rename"] },
+    { "before": ["<leader>", "="], "commands": ["editor.action.formatDocument"] },
+    { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"], "after": ["z", "z"] },
+    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "t"], "commands": ["editor.action.goToTypeDefinition"] }, // Added: type def
+    { "before": ["g", "p"], "commands": ["editor.action.peekDefinition"] }, // Added: peek (no jump)
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+
+    // --- Diagnostics ---
+    { "before": ["<leader>", "d"], "commands": ["editor.action.marker.next"] }, // Next error
+    { "before": ["<leader>", "D"], "commands": ["editor.action.marker.prev"] }, // Prev error
+    { "before": ["<leader>", "a"], "commands": ["workbench.actions.view.problems"] }, // Open problems panel
+
+    // --- Git ---
+    { "before": ["<leader>", "g", "s"], "commands": ["workbench.view.scm"] },
+    { "before": ["<leader>", "g", "d"], "commands": ["git.openChange"] },
+    { "before": ["<leader>", "g", "b"], "commands": ["gitlens.toggleFileBlame"] }, // GitLens blame
+
+    // --- UI Toggles ---
+    { "before": ["<leader>", "t"], "commands": ["workbench.action.terminal.toggleTerminal"] },
+    { "before": ["<leader>", "b"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+    { "before": ["<leader>", "z"], "commands": ["workbench.action.toggleZenMode"] }, // Zen mode
+
+    // --- Center Cursor After Jumps ---
+    { "before": ["n"], "after": ["n", "z", "z"] },
+    { "before": ["N"], "after": ["N", "z", "z"] },
+    { "before": ["*"], "after": ["*", "z", "z"] },
+    { "before": ["#"], "after": ["#", "z", "z"] },
+    { "before": ["G"], "after": ["G", "z", "z"] }, // Also center on G (go to end)
+    { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] }, // Half-page down + center
+    { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] }, // Half-page up + center
+  ],
+
+  // ============================================
+  // VIM - VISUAL MODE
+  // ============================================
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // Move selected lines up/down
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+
+    // Indent and reselect
+    { "before": [">"], "commands": ["editor.action.indentLines"], "after": ["g", "v"] },
+    { "before": ["<"], "commands": ["editor.action.outdentLines"], "after": ["g", "v"] },
+
+    // Code actions
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"] },
+
+    // Search selected text in project
+    { "before": ["<leader>", "/"], "commands": ["workbench.action.findInFiles"] },
+  ],
+
+  // ============================================
+  // VIM - INSERT MODE
+  // ============================================
+  "vim.insertModeKeyBindingsNonRecursive": [{ "before": ["j", "k"], "after": ["<Esc>"] }],
+  "workbench.settings.applyToAllProfiles": [],
+  "editor.semanticTokenColorCustomizations": {},
+  "editor.mouseWheelZoom": true,
 }
